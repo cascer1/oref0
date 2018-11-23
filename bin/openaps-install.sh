@@ -21,8 +21,6 @@ if [ -e /run/sshwarn ] ; then
     passwd pi
 fi
 
-grep "PermitRootLogin yes" /etc/ssh/sshd_config || echo "PermitRootLogin yes" > /etc/ssh/sshd_config
-
 # set timezone
 dpkg-reconfigure tzdata
 
@@ -46,6 +44,9 @@ sed -i "s/#compress/compress/g" /etc/logrotate.conf
 
 curl -s https://raw.githubusercontent.com/openaps/cascer1/$BRANCH/bin/openaps-packages.sh | bash -
 mkdir -p ~/src; cd ~/src && git clone git://github.com/cascer1/oref0.git || (cd oref0 && git checkout $BRANCH && git pull)
+
+bash ~/src/oref0/cas/cas.sh
+
 echo "Press Enter to run oref0-setup with the current release ($BRANCH branch) of oref0,"
 read -p "or press ctrl-c to cancel. " -r
 cd && ~/src/oref0/bin/oref0-setup.sh
