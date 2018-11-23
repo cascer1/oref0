@@ -38,12 +38,6 @@ function is_bash_process_running_named ()
     fi
 }
 
-if ! is_bash_process_running_named "oref0-online $BT_MAC"; then
-    oref0-online "$BT_MAC" 2>&1 >> /var/log/openaps/network.log &
-fi
-
-sudo wpa_cli scan &
-
 (
     killall -g --older-than 30m openaps
     killall -g --older-than 30m oref0-pump-loop
@@ -105,18 +99,6 @@ fi
 
 if ! is_bash_process_running_named oref0-pump-loop; then
     oref0-pump-loop 2>&1 | tee -a /var/log/openaps/pump-loop.log &
-fi
-
-if [[ ! -z "$BT_PEB" ]]; then
-    if ! is_process_running_named "peb-urchin-status $BT_PEB"; then
-        peb-urchin-status $BT_PEB 2>&1 | tee -a /var/log/openaps/urchin-loop.log &
-    fi
-fi
-
-if [[ ! -z "$BT_PEB" || ! -z "$BT_MAC" ]]; then
-    if ! is_bash_process_running_named oref0-bluetoothup; then
-        oref0-bluetoothup >> /var/log/openaps/network.log &
-    fi
 fi
 
 if [[ ! -z "$PUSHOVER_TOKEN" && ! -z "$PUSHOVER_USER" ]]; then
