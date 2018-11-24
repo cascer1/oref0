@@ -9,6 +9,15 @@ bash <(curl -s https://raw.githubusercontent.com/cascer1/dotvim/install.sh)
 apt-get install -y git vim ethtool ruby2.3
 gem install gist
 
+# Required for installing ngrok
+apt-get install -y unzip wget
+
+# Install ngrok
+wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip
+unzip ngrok-stable-linux-arm.zip
+mv ngrok /usr/local/bin/
+chmod +x /usr/local/bin/ngrok
+
 # Ask for ngrok and ssh info
 read -p "What SSH port would you like to use? " -r
 sshport=$REPLY
