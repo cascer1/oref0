@@ -49,6 +49,7 @@ sed -i -r "s/##HOSTNAME##/$ngrokhost/g" /usr/local/etc/ngrok.conf
 sed -i -r "s/##SSHPORT##/$sshport/g" /usr/local/etc/ngrok.conf
 
 echo "service ngrok restart" >> /etc/rc.local
+systemctl enable ngrok
 
 # Autotune git logging script
 cd /root
