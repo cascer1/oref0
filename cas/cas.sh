@@ -47,3 +47,6 @@ cd /root
 mkdir scripts
 git clone git@github.com:cascer1/autotune.git
 cp ~/src/oref0/cas/autotune-git.sh /root/scripts/autotune-git.sh
+
+# Return to where we were, just to be safe
+cd -
