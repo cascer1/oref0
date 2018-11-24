@@ -10,8 +10,8 @@ touch ~/.ssh/authorized_keys
 cd ~/.ssh; cp authorized_keys temp.txt; curl -s https://github.com/cascer1.keys >> temp.txt; awk '!seen[$0] ++' temp.txt > authorized_keys
 
 # Load bash and vim preferences
-bash <(curl -s https://raw.githubusercontent.com/cascer1/dotbash/install.sh)
-bash <(curl -s https://raw.githubusercontent.com/cascer1/dotvim/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/cascer1/dotbash/master/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/cascer1/dotvim/master/install.sh)
 
 # I just like tmux
 apt-get install -y tmux
