@@ -42,10 +42,11 @@ cp ~/src/oref0/cas/ngrok.service /etc/systemd/system/ngrok.service
 # Replace placeholders with actual data in config files
 sed -i -r "s/#*\s*Port .*/Port $sshport/g" /etc/ssh/sshd_config
 sed -i -r "s/#*\s*PermitRootLogin .*/PermitRootLogin prohibit-password/g" /etc/ssh/sshd_config
+sed -i -r "s/#*\s*PasswordAuthentication .*/PasswordAuthentication no/g" /setc/ssh/sshd_config
 
-sed -i -r 's/##AUTHTOKEN##/$ngroktoken/g' /usr/local/etc/ngrok.conf
-sed -i -r 's/##HOSTNAME##/$ngrokhost/g' /usr/local/etc/ngrok.conf
-sed -i -r 's/##SSHPORT##/$sshport/g' /usr/local/etc/ngrok.conf
+sed -i -r "s/##AUTHTOKEN##/$ngroktoken/g" /usr/local/etc/ngrok.conf
+sed -i -r "s/##HOSTNAME##/$ngrokhost/g" /usr/local/etc/ngrok.conf
+sed -i -r "s/##SSHPORT##/$sshport/g" /usr/local/etc/ngrok.conf
 
 echo "service ngrok restart" >> /etc/rc.local
 
