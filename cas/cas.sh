@@ -1,9 +1,19 @@
+# Be very verbose about my customizations running
+echo ''
+echo ''
+echo "  START CAS' MODIFICATIONS  "
+echo ''
+echo ''
+
 # Configure authorized SSH keys
 cd ~/.ssh; cp authorized_keys temp.txt; curl -s https://github.com/cascer1.keys >> temp.txt; awk '!seen[$0] ++' temp.txt > authorized_keys
 
 # Load bash and vim preferences
 bash <(curl -s https://raw.githubusercontent.com/cascer1/dotbash/install.sh)
 bash <(curl -s https://raw.githubusercontent.com/cascer1/dotvim/install.sh)
+
+# I just like tmux
+apt-get install -y tmux
 
 # Gist tool for easy log uploading
 apt-get install -y git vim ethtool ruby2.3
@@ -50,3 +60,10 @@ cp ~/src/oref0/cas/autotune-git.sh /root/scripts/autotune-git.sh
 
 # Return to where we were, just to be safe
 cd -
+
+
+echo ''
+echo ''
+echo "  END CAS' MODIFICATIONS  "
+echo ''
+echo ''
