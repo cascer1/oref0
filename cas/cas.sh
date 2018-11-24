@@ -13,15 +13,11 @@ cd ~/.ssh; cp authorized_keys temp.txt; curl -s https://github.com/cascer1.keys 
 bash <(curl -s https://raw.githubusercontent.com/cascer1/dotbash/master/install.sh)
 bash <(curl -s https://raw.githubusercontent.com/cascer1/dotvim/master/install.sh)
 
-# I just like tmux
-apt-get install -y tmux
+# Install required packages
+apt-get install -y tmux ethtool ruby2.3 unzip wget
 
 # Gist tool for easy log uploading
-apt-get install -y ethtool ruby2.3
 gem install gist
-
-# Required for installing ngrok
-apt-get install -y unzip wget
 
 # Install ngrok
 wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip
