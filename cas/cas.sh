@@ -16,7 +16,7 @@ cd ~/.ssh; cp authorized_keys temp.txt; curl -s https://github.com/$githubuserna
 # Load bash and vim preferences
 read -p "Would you like to load Cas' Vim and Bash preferences? (y/N)" -r
 loadpreferences=$REPLY
-if ["$loadpreferences" == "y"]; then
+if [ "$loadpreferences" = "y" ] || [ "$loadpreferences" = "Y" ]; then
   bash <(curl -s https://raw.githubusercontent.com/cascer1/dotbash/master/install.sh)
   bash <(curl -s https://raw.githubusercontent.com/cascer1/dotvim/master/install.sh)
 fi
