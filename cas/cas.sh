@@ -14,9 +14,9 @@ touch ~/.ssh/authorized_keys
 cd ~/.ssh; cp authorized_keys temp.txt; curl -s https://github.com/$githubusername.keys >> temp.txt; awk '!seen[$0] ++' temp.txt > authorized_keys
 
 # Load bash and vim preferences
-read -p "Would you like to load Cas' Vim and Bash preferences? (Y/n)" -r
+read -p "Would you like to load Cas' Vim and Bash preferences? (y/N)" -r
 loadpreferences=$REPLY
-if ["$loadpreferences" =! "n"]; then
+if ["$loadpreferences" == "y"]; then
   bash <(curl -s https://raw.githubusercontent.com/cascer1/dotbash/master/install.sh)
   bash <(curl -s https://raw.githubusercontent.com/cascer1/dotvim/master/install.sh)
 fi
