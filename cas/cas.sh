@@ -5,13 +5,21 @@ echo "  START CAS' MODIFICATIONS  "
 echo ''
 echo ''
 
+#Ask for github username
+read -p "What is your github username? " -r
+githubusername=$REPLY
+
 # Configure authorized SSH keys
 touch ~/.ssh/authorized_keys
-cd ~/.ssh; cp authorized_keys temp.txt; curl -s https://github.com/cascer1.keys >> temp.txt; awk '!seen[$0] ++' temp.txt > authorized_keys
+cd ~/.ssh; cp authorized_keys temp.txt; curl -s https://github.com/$githubusername.keys >> temp.txt; awk '!seen[$0] ++' temp.txt > authorized_keys
 
 # Load bash and vim preferences
-bash <(curl -s https://raw.githubusercontent.com/cascer1/dotbash/master/install.sh)
-bash <(curl -s https://raw.githubusercontent.com/cascer1/dotvim/master/install.sh)
+read -p "Would you like to load Cas' Vim and Bash preferences? (Y/n)" -r
+loadpreferences=$REPLY
+if ["$loadpreferences" =! "n"]; then
+  bash <(curl -s https://raw.githubusercontent.com/cascer1/dotbash/master/install.sh)
+  bash <(curl -s https://raw.githubusercontent.com/cascer1/dotvim/master/install.sh)
+fi
 
 # Install required packages
 apt-get install -y tmux ethtool ruby2.3 unzip wget
