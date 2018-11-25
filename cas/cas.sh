@@ -60,10 +60,15 @@ echo "service ngrok restart" >> /etc/rc.local
 systemctl enable ngrok
 
 # Autotune git logging script
-cd /root
-mkdir scripts
-git clone git@github.com:cascer1/autotune.git
-cp ~/src/oref0/cas/autotune-git.sh /root/scripts/autotune-git.sh
+read -p "Are you Cas? (y/N) " -r
+iscas=$REPLY
+
+if [ "$iscas" = "y" ] || [ "$iscas" = "Y" ]; then
+    cd /root
+    mkdir scripts
+    git clone git@github.com:cascer1/autotune.git
+    cp ~/src/oref0/cas/autotune-git.sh /root/scripts/autotune-git.sh
+fi
 
 # Return to where we were, just to be safe
 cd -
