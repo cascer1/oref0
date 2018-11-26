@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+if [ `id -u` -ne 0 ]; then 
+  echo "openaps-install MUST be run as root"
+  exit
+fi
+
 BRANCH=${1:-master}
 
 echo "You are running branch $BRANCH"
