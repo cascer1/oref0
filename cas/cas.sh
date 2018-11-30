@@ -58,6 +58,7 @@ sed -i -r "s/##SSHPORT##/$sshport/g" /usr/local/etc/ngrok.conf
 
 echo "service ngrok restart" >> /etc/rc.local
 systemctl enable ngrok
+service ngrok start
 
 # Autotune git logging script
 read -p "Are you Cas? (y/N) " -r
