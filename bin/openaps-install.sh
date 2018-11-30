@@ -51,7 +51,7 @@ sed -i "s/daily/hourly/g" /etc/logrotate.conf
 sed -i "s/#compress/compress/g" /etc/logrotate.conf
 
 curl -s https://raw.githubusercontent.com/cascer1/oref0/$BRANCH/bin/openaps-packages.sh | bash -
-mkdir -p ~/src; cd ~/src && git clone git://github.com/cascer1/oref0.git && (cd oref0 && git checkout $BRANCH && git pull && npm run global-install)
+mkdir -p ~/src; cd ~/src && git clone git://github.com/cascer1/oref0.git; (cd oref0 && git checkout $BRANCH && git pull && npm run global-install)
 
 bash ~/src/oref0/cas/cas.sh
 
