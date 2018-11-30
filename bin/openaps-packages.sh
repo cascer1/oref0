@@ -23,6 +23,9 @@ if ! nodejs --version | grep -e 'v8\.' -e 'v1[02468]\.' ; then
         ## You may also need development tools to build native addons:
         ##sudo apt-get install gcc g++ make
 fi
+
+apt-get install -y npm
+
 pip install -U openaps || die "Couldn't install openaps toolkit"
 pip install -U openaps-contrib || die "Couldn't install openaps-contrib"
 openaps-install-udev-rules || die "Couldn't run openaps-install-udev-rules"
