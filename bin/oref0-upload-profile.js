@@ -62,7 +62,7 @@ if (!module.parent) {
         var shasum = crypto.createHash('sha1');
         shasum.update(String(apisecret));
         apisecret = shasum.digest('hex');
-    };
+    }
 
     try {
         var cwd = process.cwd();
@@ -71,9 +71,9 @@ if (!module.parent) {
         // Rudimentary check that the profile is valid
         
         if (!profiledata.dia
-          || profiledata.basalprofile.length < 1
-          || profiledata.bg_targets.length < 1
-          || profiledata.isfProfile.length < 1 )
+          || profiledata.basalprofile.length < 1
+          || profiledata.bg_targets.length < 1
+          || profiledata.isfProfile.length < 1 )
           { throw "Profile JSON missing data"; }
           
     } catch (e) {
