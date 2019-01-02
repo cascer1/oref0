@@ -13,23 +13,23 @@ EOT
 echo 'Acquire::ForceIPv4 "true";' | sudo tee /etc/apt/apt.conf.d/99force-ipv4
 
 apt-get install -y sudo
-apt-get update && sudo apt-get -y upgrade
-apt-get install -y git python python-dev software-properties-common python-numpy python-pip watchdog strace tcpdump screen acpid vim locate jq lm-sensors || die "Couldn't install packages"
+sudo apt-get update && sudo apt-get -y upgrade
+sudo apt-get install -y git python python-dev software-properties-common python-numpy python-pip watchdog strace tcpdump screen acpid vim locate jq lm-sensors || die "Couldn't install packages"
 
 # install/upgrade to latest node 8 if neither node 8 nor node 10+ LTS are installed
 if ! nodejs --version | grep -e 'v8\.' -e 'v1[02468]\.' ; then
-        bash -c "curl -sL https://deb.nodesource.com/setup_8.x | bash -" || die "Couldn't setup node 8"
-        apt-get install -y nodejs || die "Couldn't install nodejs"
+        sudo bash -c "curl -sL https://deb.nodesource.com/setup_8.x | bash -" || die "Couldn't setup node 8"
+        sudo apt-get install -y nodejs || die "Couldn't install nodejs"
         ## You may also need development tools to build native addons:
         ##sudo apt-get install gcc g++ make
 fi
 
 apt-get install -y npm
 
-pip install -U openaps || die "Couldn't install openaps toolkit"
-pip install -U openaps-contrib || die "Couldn't install openaps-contrib"
-openaps-install-udev-rules || die "Couldn't run openaps-install-udev-rules"
-activate-global-python-argcomplete || die "Couldn't run activate-global-python-argcomplete"
-npm install -g json oref0 || die "Couldn't install json and oref0"
+sudo pip install -U openaps || die "Couldn't install openaps toolkit"
+sudo pip install -U openaps-contrib || die "Couldn't install openaps-contrib"
+sudo openaps-install-udev-rules || die "Couldn't run openaps-install-udev-rules"
+sudo activate-global-python-argcomplete || die "Couldn't run activate-global-python-argcomplete"
+sudo npm install -g json oref0 || die "Couldn't install json and oref0"
 echo openaps installed
 openaps --version
