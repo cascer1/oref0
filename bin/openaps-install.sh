@@ -58,4 +58,4 @@ bash ~/src/oref0/cas/cas.sh
 
 echo "Press Enter to run oref0-setup with the current release ($BRANCH branch) of oref0,"
 read -p "or press ctrl-c to cancel. " -r
-cd && oref0-setup
+cd && bash ~/src/oref0/bin/oref0-setup
