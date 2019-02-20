@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-set -e
+#!/usr/bin/env bash -x
 
 if [ `id -u` -ne 0 ]; then
   echo "openaps-install MUST be run as root"
